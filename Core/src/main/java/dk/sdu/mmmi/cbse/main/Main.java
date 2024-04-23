@@ -28,6 +28,8 @@ public class Main extends Application {
     private final Map<Entity, Polygon> polygons = new ConcurrentHashMap<>();
     private final Pane gameWindow = new Pane();
 
+    private long lastFrame;
+
     public static void main(String[] args) {
         launch(Main.class);
     }
@@ -78,6 +80,7 @@ public class Main extends Application {
             polygons.put(entity, polygon);
             gameWindow.getChildren().add(polygon);
         }
+        lastFrame = System.nanoTime();
         render();
         window.setScene(scene);
         window.setTitle("ASTEROIDS");
@@ -88,6 +91,10 @@ public class Main extends Application {
         new AnimationTimer() {
             @Override
             public void handle(long now) {
+
+                gameData.setDelta(now - lastFrame);
+                lastFrame = now;
+
                 update();
                 draw();
                 gameData.getKeys().update();

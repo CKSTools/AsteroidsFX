@@ -6,6 +6,16 @@ public class GameData {
     private int displayHeight = 800;
     private final GameKeys keys = new GameKeys();
 
+    public long getDelta() {
+        return delta;
+    }
+
+    public void setDelta(long delta) {
+        this.delta = delta;
+    }
+
+    private long delta;
+
 
     public GameKeys getKeys() {
         return keys;
