@@ -36,7 +36,6 @@ public class AsteroidProcessor implements IEntityProcessingService {
             if (asteroid.getY() > gameData.getDisplayHeight()) {
                 asteroid.setY(asteroid.getY() % gameData.getDisplayHeight());
             }
-
         }
 
     }
