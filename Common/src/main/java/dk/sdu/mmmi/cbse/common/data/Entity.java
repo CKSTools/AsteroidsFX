@@ -10,7 +10,22 @@ public class Entity implements Serializable {
     private double[] polygonCoordinates;
     private double x;
     private double y;
-    private double rotation;
+    private double heading;
+    private int rotationRate;
+
+    public void setRotationRate(int rotationRate) {
+        this.rotationRate = rotationRate;
+    }
+
+    public double getRotation() {
+        return rotation;
+    }
+
+    public void setRotation(double rotation) {
+        this.rotation = rotation;
+    }
+
+    private double rotation = 0;
     private float radius;
 
     public void setForwardRate(int forwardRate) {
@@ -51,12 +66,12 @@ public class Entity implements Serializable {
         return y;
     }
 
-    public void setRotation(double rotation) {
-        this.rotation = rotation;
+    public void setHeading(double heading) {
+        this.heading = heading;
     }
 
-    public double getRotation() {
-        return rotation;
+    public double getHeading() {
+        return heading;
     }
 
     public void setRadius(float radius) {
@@ -67,18 +82,26 @@ public class Entity implements Serializable {
         return this.radius;
     }
 
-    public void rotation(long delta, boolean right) {
-        double rate =  (double) (this.forwardRate * delta) /1000000000;
-        if(right) {
-            this.rotation += rate;
-        }
-        else this.rotation -= rate;
-    }
+//    public void heading(long delta, boolean right) {
+//        double rate =  (double) (this.forwardRate * delta) /1000000000;
+//        if(right) {
+//            this.heading += rate;
+//        }
+//        else this.heading -= rate;
+//    }
 
 
     public void forward(long delta) {
         double rate =  (double) (this.forwardRate * delta) /1000000000;
-        this.x += Math.cos(Math.toRadians(rotation)) * rate;
-        this.y += Math.sin(Math.toRadians(rotation)) * rate;
+        this.x += Math.cos(Math.toRadians(heading)) * rate;
+        this.y += Math.sin(Math.toRadians(heading)) * rate;
+    }
+
+    public void rotate(double delta, boolean right) {
+        double value = (double) (this.rotationRate * delta) /1000000000;
+        if(right) {
+            this.rotation += value;
+        }
+        else this.rotation -= value;
     }
 }
