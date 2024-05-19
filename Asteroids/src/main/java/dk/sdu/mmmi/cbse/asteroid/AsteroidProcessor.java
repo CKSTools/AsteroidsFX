@@ -11,10 +11,33 @@ public class AsteroidProcessor implements IEntityProcessingService {
 
     private IAsteroidSplitter asteroidSplitter = new AsteroidSplitterImpl();
 
+    private static double spawnRate = 5;
+    private static double spawnTimer = 0.0;
+
     @Override
     public void process(GameData gameData, World world) {
 
+        spawnTimer += gameData.getDeltaTime();
+        if (spawnTimer >= spawnRate) {
+            world.addEntity(new AsteroidPlugin().createAsteroid(gameData));
+            spawnTimer -= spawnRate;
+        }
+
         for (Entity asteroid : world.getEntities(Asteroid.class)) {
+
+
+            if(asteroid.getHealth() <= 0){
+                world.removeEntity(asteroid);
+                continue;
+            }
+
+            if (asteroidSplitter != null) {
+                if (((Asteroid) asteroid).isHit()) {
+                    System.out.println("Asteroid hit and splitting.");
+                    asteroidSplitter.createSplitAsteroid(asteroid, world);
+                    ((Asteroid) asteroid).setHit(false);
+                }
+            }
 
             asteroid.forward(gameData.getDelta());
             asteroid.rotate(gameData.getDelta(), true);

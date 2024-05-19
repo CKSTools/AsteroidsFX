@@ -27,11 +27,11 @@ public class AsteroidPlugin implements IGamePluginService {
         }
     }
 
-    private Entity createAsteroid(GameData gameData) {
+    public Entity createAsteroid(GameData gameData) {
         System.out.println("Create asteroid");
         Entity asteroid = new Asteroid();
         Random rnd = new Random();
-        int size = rnd.nextInt(20) + 5;
+        int size = rnd.nextInt(11) + 10;
         asteroid.setPolygonCoordinates(size, -size, -size, -size, -size, size, size, size);
         asteroid.setX(rnd.nextInt(gameData.getDisplayWidth()));
         asteroid.setY(rnd.nextInt(gameData.getDisplayHeight()));
@@ -40,6 +40,9 @@ public class AsteroidPlugin implements IGamePluginService {
         asteroid.setForwardRate(100);
         asteroid.setRotation(0);
         asteroid.setRotationRate(300);
+        int a = rnd.nextInt(2) + 1;
+        asteroid.setHealth(a);
+        System.out.println("Astroid hp = " + a);
         asteroid.setType("ASTEROID");
         System.out.println("Asteroid created size " + size);
         return asteroid;

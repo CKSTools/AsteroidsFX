@@ -27,6 +27,7 @@ public class Main extends Application {
     private final World world = new World();
     private final Map<Entity, Polygon> polygons = new ConcurrentHashMap<>();
     private final Pane gameWindow = new Pane();
+    private Text text;
 
     private long lastFrame;
 
@@ -36,7 +37,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage window) throws Exception {
-        Text text = new Text(10, 20, "Destroyed asteroids: 0");
+        text = new Text(10, 20, "Destroyed asteroids: " + gameData.getDestroyedAsteroids());
         gameWindow.setPrefSize(gameData.getDisplayWidth(), gameData.getDisplayHeight());
         gameWindow.getChildren().add(text);
 
@@ -99,8 +100,10 @@ public class Main extends Application {
     }
 
     private void update(long now) {
+        gameData.updateDeltaTime();
         gameData.setDelta(now - lastFrame);
         lastFrame = now;
+        text.setText("Destroyed asteroids: " + gameData.getDestroyedAsteroids()); // Update the score
         for (IEntityProcessingService entityProcessorService : getEntityProcessingServices()) {
             entityProcessorService.process(gameData, world);
         }

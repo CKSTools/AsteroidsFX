@@ -50,14 +50,13 @@ public class Entity implements Serializable {
 
     private double rotation = 0;
     private float radius;
-
+    private int forwardRate;
     public void setForwardRate(int forwardRate) {
         this.forwardRate = forwardRate;
     }
-
-    private int forwardRate;
-            
-
+    public int getForwardRate() {
+        return forwardRate;
+    }
     public String getID() {
         return ID.toString();
     }
