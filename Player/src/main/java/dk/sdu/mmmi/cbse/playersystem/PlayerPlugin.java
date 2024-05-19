@@ -29,6 +29,7 @@ public class PlayerPlugin implements IGamePluginService {
         playerShip.setRotationRate(300);
         playerShip.setRotation(0);
         playerShip.setForwardRate(111);
+        playerShip.setType("PLAYER");
         return playerShip;
     }
 

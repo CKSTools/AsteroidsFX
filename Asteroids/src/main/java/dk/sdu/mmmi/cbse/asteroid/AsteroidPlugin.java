@@ -40,6 +40,7 @@ public class AsteroidPlugin implements IGamePluginService {
         asteroid.setForwardRate(100);
         asteroid.setRotation(0);
         asteroid.setRotationRate(300);
+        asteroid.setType("ASTEROID");
         return asteroid;
     }
 }

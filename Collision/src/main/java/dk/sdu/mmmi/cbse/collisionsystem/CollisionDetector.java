@@ -21,11 +21,24 @@ public class CollisionDetector implements IPostEntityProcessingService {
                     continue;                    
                 }
 
+
                 // CollisionDetection
                 if (this.collides(entity1, entity2)) {
-                    world.removeEntity(entity1);
-                    world.removeEntity(entity2);
+
+                    if(entity1.getType().equals("ASTEROID") && entity2.getType().equals("PLAYER_BULLET")) {
+                        world.removeEntity(entity1);
+                        world.removeEntity(entity2);
+                        entity1.setHealth(entity1.getHealth()-1);
+                    }
+                    if(entity1.getType().equals("ASTEROID") && entity2.getType().equals("PLAYER")) {
+                        world.removeEntity(entity1);
+                        world.removeEntity(entity2);
+                        entity1.setHealth(entity1.getHealth()-1);
+                        entity2.setHealth(entity2.getHealth()-1);
+                    }
+
                 }
+
             }
         }
 
