@@ -16,14 +16,6 @@ public class CollisionDetector implements IPostEntityProcessingService {
         // two for loops for all entities in the world
         for (Entity entity1 : world.getEntities()) {
             for (Entity entity2 : world.getEntities()) {
-/*
-
-                // if the two entities are identical, skip the iteration
-                if (entity1.getID().equals(entity2.getID())) {
-                    continue;                    
-                }
-*/
-
 
                 // CollisionDetection
                 if (this.collides(entity1, entity2)) {
@@ -40,12 +32,12 @@ public class CollisionDetector implements IPostEntityProcessingService {
                     if (entity1.getType().equals("ASTEROIDSPLINTER") && entity2.getType().equals("PLAYER")) {
                         world.removeEntity(entity1);
                         entity2.setHealth(entity2.getHealth()-1);
-                        gameData.setDestroyedAsteroids(gameData.getDestroyedAsteroids()+1);
+                        gameData.setDestroyedAsteroids(gameData.getDestroyedAsteroids()+2);
                     }
                     if(entity1.getType().equals("ASTEROIDSPLINTER") && entity2.getType().equals("PLAYER_BULLET")) {
                         world.removeEntity(entity2);
                         world.removeEntity(entity1);
-                        gameData.setDestroyedAsteroids(gameData.getDestroyedAsteroids()+1);
+                        gameData.setDestroyedAsteroids(gameData.getDestroyedAsteroids()+2);
                     }
                     if(entity1.getType().equals("ASTEROID") && entity2.getType().equals("PLAYER")) {
                         entity2.setHealth(entity2.getHealth()-1);
