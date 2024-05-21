@@ -1,5 +1,7 @@
 package dk.sdu.mmmi.cbse.common.data;
 
+import javafx.scene.paint.Color;
+
 import java.io.Serializable;
 import java.util.UUID;
 
@@ -15,6 +17,7 @@ public class Entity implements Serializable {
     private int rotationRate;
     private int health;
     private int speed;
+
 
 
     public String getType() {
@@ -103,16 +106,6 @@ public class Entity implements Serializable {
     public float getRadius() {
         return this.radius;
     }
-
-//    public void heading(long delta, boolean right) {
-//        double rate =  (double) (this.forwardRate * delta) /1000000000;
-//        if(right) {
-//            this.heading += rate;
-//        }
-//        else this.heading -= rate;
-//    }
-
-
     public void forward(long delta) {
         double rate =  (double) (this.forwardRate * delta) /1000000000;
         this.x += Math.cos(Math.toRadians(heading)) * rate;

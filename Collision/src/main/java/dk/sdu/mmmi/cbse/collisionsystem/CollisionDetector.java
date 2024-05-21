@@ -47,6 +47,19 @@ public class CollisionDetector implements IPostEntityProcessingService {
                         gameData.setDestroyedAsteroids(gameData.getDestroyedAsteroids()+1);
                     }
 
+                    if(entity1.getType().equals("ENEMY") && entity2.getType().equals("PLAYER")) {
+                        entity2.setHealth(entity2.getHealth()-1);
+                        System.out.println("Entity 1:" + entity1.getType() +"entity 2:" + entity2.getType());
+                        System.out.println("Entity 1 health:" + entity1.getHealth() +"entity 2 health:" + entity2.getHealth());
+                    }
+
+                    if(entity1.getType().equals("ENEMY") && entity2.getType().equals("PLAYER_BULLET")) {
+                        entity1.setHealth(entity1.getHealth()-1);
+                        world.removeEntity(entity2);
+                        System.out.println("Entity 1:" + entity1.getType() +"entity 2:" + entity2.getType());
+                        System.out.println("Entity 1 health:" + entity1.getHealth() +"entity 2 health:" + entity2.getHealth());
+                    }
+
                 }
 
             }
