@@ -23,6 +23,8 @@
         <module>Enemy</module>
         <module>CommonEnemy</module>
         <module>CommonMap</module>
+        <module>Weapon</module>
+        <module>CommonWeapon</module>
     </modules>
     <properties>
         <java>java</java>
