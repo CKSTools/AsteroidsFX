@@ -15,6 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import static java.util.stream.Collectors.toList;
 
 import javafx.animation.AnimationTimer;
+import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
@@ -22,7 +23,7 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class Game{
+public class Game {
 
     private final GameData gameData = new GameData();
     private final World world = new World();
@@ -45,6 +46,7 @@ public class Game{
         System.out.println(entityProcessingServiceList.stream().count());
         System.out.println(postEntityProcessingServices.stream().count());
     }
+
     public void start(Stage window) throws Exception {
         text = new Text(10, 20, "Destroyed asteroids: " + gameData.getDestroyedAsteroids());
         gameWindow.setPrefSize(gameData.getDisplayWidth(), gameData.getDisplayHeight());
