@@ -3,6 +3,7 @@ package dk.sdu.mmmi.cbse.asteroid;
 import dk.sdu.mmmi.cbse.common.asteroids.Asteroid;
 import dk.sdu.mmmi.cbse.common.asteroids.IAsteroidSplitter;
 import dk.sdu.mmmi.cbse.common.data.Entity;
+import dk.sdu.mmmi.cbse.common.data.EntityType;
 import dk.sdu.mmmi.cbse.common.data.World;
 
 import java.util.Random;
@@ -32,7 +33,7 @@ public class AsteroidSplitterImpl implements IAsteroidSplitter {
         asteroid.setForwardRate(speed);
         asteroid.setRotationRate(300);
         asteroid.setHealth(health);
-        asteroid.setType("ASTEROIDSPLINTER");
+        asteroid.setType(EntityType.ASTEROIDSPLINTER);
         return asteroid;
     }
 

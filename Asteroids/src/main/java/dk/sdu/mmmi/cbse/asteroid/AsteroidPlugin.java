@@ -2,6 +2,7 @@ package dk.sdu.mmmi.cbse.asteroid;
 
 import dk.sdu.mmmi.cbse.common.asteroids.Asteroid;
 import dk.sdu.mmmi.cbse.common.data.Entity;
+import dk.sdu.mmmi.cbse.common.data.EntityType;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
@@ -43,7 +44,7 @@ public class AsteroidPlugin implements IGamePluginService {
         int a = rnd.nextInt(2) + 1;
         asteroid.setHealth(a);
         System.out.println("Astroid hp = " + a);
-        asteroid.setType("ASTEROID");
+        asteroid.setType(EntityType.ASTEROID);
         System.out.println("Asteroid created size " + size);
         return asteroid;
     }

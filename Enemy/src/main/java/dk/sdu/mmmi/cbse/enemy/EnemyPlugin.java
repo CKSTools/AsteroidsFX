@@ -1,6 +1,7 @@
 package dk.sdu.mmmi.cbse.enemy;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
+import dk.sdu.mmmi.cbse.common.data.EntityType;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.enemy.Enemy;
@@ -34,7 +35,7 @@ public class EnemyPlugin implements IGamePluginService {
         this.enemy.setHealth(2);
         this.enemy.setForwardRate(150);
         this.enemy.setRotationRate(150);
-        this.enemy.setType("ENEMY");
+        this.enemy.setType(EntityType.ENEMY_BULLET);
         return this.enemy;
     }
 

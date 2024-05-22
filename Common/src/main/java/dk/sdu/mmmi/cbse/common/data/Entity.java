@@ -9,7 +9,7 @@ public class Entity implements Serializable {
 
     private final UUID ID = UUID.randomUUID();
 
-    private String type;
+    private EntityType type;
     private double[] polygonCoordinates;
     private double x;
     private double y;
@@ -20,10 +20,10 @@ public class Entity implements Serializable {
 
 
 
-    public String getType() {
-        return type == null ? "Unknown" : type;
+    public EntityType getType() {
+        return type == null ? EntityType.UNKNOWN : type;
     }
-    public void setType(String type) {
+    public void setType(EntityType type) {
         this.type = type;
     }
     public int getSpeed() {

@@ -1,6 +1,7 @@
 package dk.sdu.mmmi.cbse.playersystem;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
+import dk.sdu.mmmi.cbse.common.data.EntityType;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
@@ -29,7 +30,7 @@ public class PlayerPlugin implements IGamePluginService {
         playerShip.setRotationRate(300);
         playerShip.setRotation(0);
         playerShip.setForwardRate(111);
-        playerShip.setType("PLAYER");
+        playerShip.setType(EntityType.PLAYER);
         playerShip.setHealth(500);
         return playerShip;
     }
