@@ -3,9 +3,11 @@ package dk.sdu.mmmi.cbse.playersystem;
 import dk.sdu.mmmi.cbse.common.bullet.BulletSPI;
 import dk.sdu.mmmi.cbse.common.data.*;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
+import dk.sdu.mmmi.cbse.common.weapon.WeaponSPI;
 
 import java.util.Collection;
 import java.util.ServiceLoader;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
@@ -34,13 +36,12 @@ public class PlayerControlSystem implements IEntityProcessingService {
                 player.forward(gameData.getDelta());
             }
             if(gameData.getKeys().isDown(GameKeys.SPACE)) {
-                getBulletSPIs().stream().findFirst().ifPresent(
-                        spi -> {
-                            Entity bullet = spi.createBullet(player, gameData);
-                            bullet.setType(EntityType.PLAYER_BULLET);
-                            world.addEntity(bullet);
-                        }
-                );
+                this.getWeaponSPIs().stream().findFirst().ifPresent((spi) -> {
+                    System.out.println("Creating weapon.");
+                    player.setWeapon(spi.createWeapon(player));
+                    player.get
+                    world.addEntity(player.getWeapon());
+                });
             }
             
         if (player.getX() < 0) {
@@ -63,7 +64,7 @@ public class PlayerControlSystem implements IEntityProcessingService {
         }
     }
 
-    private Collection<? extends BulletSPI> getBulletSPIs() {
-        return ServiceLoader.load(BulletSPI.class).stream().map(ServiceLoader.Provider::get).collect(toList());
+    private Collection<? extends WeaponSPI> getWeaponSPIs() {
+        return (Collection)ServiceLoader.load(WeaponSPI.class).stream().map(ServiceLoader.Provider::get).collect(Collectors.toList());
     }
 }

@@ -61,6 +61,13 @@ public class CollisionDetector implements IPostEntityProcessingService {
                         System.out.println("Entity 1 health:" + entity1.getHealth() +"entity 2 health:" + entity2.getHealth());
                     }
 
+                    if(entity1.getType().equals(EntityType.ENEMY_BULLET) && entity2.getType().equals(EntityType.PLAYER)) {
+                        entity1.setHealth(entity2.getHealth()-1);
+                        world.removeEntity(entity1);
+                        System.out.println("Entity 1:" + entity1.getType() +"entity 2:" + entity2.getType());
+                        System.out.println("Entity 1 health:" + entity1.getHealth() +"entity 2 health:" + entity2.getHealth());
+                    }
+
                 }
 
             }

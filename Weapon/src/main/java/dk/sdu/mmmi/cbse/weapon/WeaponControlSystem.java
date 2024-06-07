@@ -27,8 +27,10 @@ public class WeaponControlSystem implements IEntityProcessingService, WeaponSPI 
                     getBulletSPIs().stream().findFirst().ifPresent(
                             spi -> {
                                 Entity bullet = spi.createBullet(weapon.getOwner(), gameData);
-                                bullet.setType(entity.getType());
+                                bullet.setType(weapon.getOwner().getType());
                                 world.addEntity(bullet);
+
+                                System.out.println("Bullet created" + bullet.getType());
                             }
                     );
                     weapon.setFireCD(0);

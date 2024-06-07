@@ -82,6 +82,8 @@ public class Entity implements Serializable {
         return x;
     }
 
+
+
     
     public void setY(double y) {
         this.y = y;
